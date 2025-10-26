@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🎉 Happy Birthday Pragya 💖</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: radial-gradient(circle at top, #ffb6c1, #ff69b4, #ff1493);
+      overflow: hidden;
+      color: #fff;
+      text-align: center;
+    }
+    h1 {
+      font-family: 'Pacifico', cursive;
+      font-size: 3em;
+      margin-top: 60px;
+      color: #fff;
+      text-shadow: 0 0 15px #fff;
+    }
+    .btns {
+      margin-top: 30px;
+    }
+    .btns button {
+      background: #fff;
+      color: #ff1493;
+      border: none;
+      margin: 10px;
+      padding: 10px 18px;
+      border-radius: 25px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .btns button:hover {
+      background: #ff1493;
+      color: #fff;
+      transform: scale(1.1);
+    }
+    .balloon {
+      position: absolute;
+      bottom: -150px;
+      width: 60px;
+      height: 80px;
+      background: pink;
+      border-radius: 50% 50% 45% 55%;
+      opacity: 0.8;
+      animation: float 6s infinite ease-in;
+    }
+    @keyframes float {
+      0% { transform: translateY(0); opacity: 0.8; }
+      50% { opacity: 1; }
+      100% { transform: translateY(-800px); opacity: 0; }
+    }
+    .cake {
+      margin-top: 80px;
+      display: none;
+      position: relative;
+    }
+    .cake .layer {
+      width: 150px;
+      height: 40px;
+      margin: 0 auto;
+      border-radius: 10px;
+      background: #fff0f5;
+      box-shadow: 0 4px 0 #ff69b4;
+    }
+    .cake .layer:nth-child(2) { width: 130px; background: #ffe4e1; }
+    .cake .layer:nth-child(3) { width: 100px; background: #ffb6c1; }
+    .candle {
+      position: absolute;
+      top: -40px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 10px;
+      height: 40px;
+      background: #fff;
+      border-radius: 5px;
+    }
+    .flame {
+      width: 14px;
+      height: 14px;
+      background: radial-gradient(ellipse at center, #ff0, #f80);
+      border-radius: 50%;
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: flicker 0.2s infinite alternate;
+    }
+    @keyframes flicker {
+      from { transform: translateX(-50%) scale(1); opacity: 1; }
+      to { transform: translateX(-50%) scale(1.2); opacity: 0.7; }
+    }
+    #message {
+      margin-top: 40px;
+      font-size: 1.3em;
+      font-weight: 500;
+      display: none;
+    }
+    .lights {
+      position: fixed;
+      top: 0; left: 0; width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: -1;
+    }
+    .light {
+      position: absolute;
+      width: 10px; height: 10px;
+      background: #fff;
+      border-radius: 50%;
+      animation: sparkle 3s infinite;
+    }
+    @keyframes sparkle {
+      0%,100% { opacity: 0; transform: scale(0.5); }
+      50% { opacity: 1; transform: scale(1.5); }
+    }
+  </style>
+</head>
+<body>
+  <h1>🎂 Happy Birthday Pragya 💖</h1>
+
+  <div class="btns">
+    <button onclick="releaseBalloons()">🎈 Release Balloons</button>
+    <button onclick="showCake()">🍰 Show Cake</button>
+    <button onclick="showMessage()">💌 Birthday Message</button>
+    <button onclick="playMusic()">🎶 Play Music</button>
+  </div>
+
+  <div class="cake" id="cake">
+    <div class="candle"><div class="flame"></div></div>
+    <div class="layer"></div>
+    <div class="layer"></div>
+    <div class="layer"></div>
+  </div>
+
+  <div id="message">💖 Pragya, you are the sweetest soul, the brightest smile, and the kindest heart I know. May your day be as beautiful as you are! 💕</div>
+
+  <div class="lights" id="lights"></div>
+
+  <audio id="bgMusic" loop>
+    <source src="audio/romantic.mp3">
+  </audio>
+
+  <script>
+    function releaseBalloons() {
+      for (let i = 0; i < 20; i++) {
+        const b = document.createElement('div');
+        b.classList.add('balloon');
+        b.style.left = Math.random() * window.innerWidth + 'px';
+        b.style.background = `hsl(${Math.random() * 360}, 70%, 70%)`;
+        b.style.animationDuration = (5 + Math.random() * 3) + 's';
+        document.body.appendChild(b);
+        setTimeout(() => b.remove(), 8000);
+      }
+    }
+
+    function showCake() {
+      document.getElementById('cake').style.display = 'block';
+    }
+
+    function showMessage() {
+      const msg = document.getElementById('message');
+      msg.style.display = 'block';
+      msg.style.animation = 'fadein 2s';
+    }
+
+    function playMusic() {
+      document.getElementById('bgMusic').play();
+      addLights();
+    }
+
+    function addLights() {
+      const lights = document.getElementById('lights');
+      for (let i = 0; i < 30; i++) {
+        const l = document.createElement('div');
+        l.classList.add('light');
+        l.style.left = Math.random() * window.innerWidth + 'px';
+        l.style.top = Math.random() * window.innerHeight + 'px';
+        l.style.animationDelay = Math.random() * 3 + 's';
+        l.style.background = `hsl(${Math.random() * 360}, 80%, 70%)`;
+        lights.appendChild(l);
+      }
+    }
+  </script>
+</body>
+</html>
